@@ -1,0 +1,66 @@
+<html>
+<head>
+</head>
+<body>
+<h2>Flight Customer</h2>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<table>
+	<th>Airline Name</th>
+    <th>Flight Number</th>
+	<th>Departure Date</th>
+	<th>Departure Time</th>
+
+	<tr>
+		<td>{{flight_data['airline_name']}}</td>
+		<td>{{flight_data['flight_number']}}</td>
+		<td>{{flight_data['departure_date']}}</td>
+		<td>{{flight_data['departure_time']}}</td>
+	</tr>
+</table>
+
+<h3>Customers</h3>
+<table>
+	<th>Name</th>
+    <th>Email</th>
+	<th>Phone</th>
+
+{% for line in customers %}
+	<tr>
+		<td>{{line['customer_name']}}</td>
+		<td>{{line['email']}}</td>
+		<th>{{line['phone_number']}}</th>
+	</tr>
+{% endfor %}
+</table>
+
+<h3>Ratings</h3>
+<table>
+	<th>Name</th>
+    <th>Email</th>
+	<th>Rate</th>
+	<th>Comment</th>
+
+
+{% for line in ratings %}
+	<tr>
+		<td>{{line['customer_name']}}</td>
+		<td>{{line['email']}}</td>
+		<th>{{line['rate']}}</th>
+		<th>{{line['rating_comment']}}</th>
+	</tr>
+{% endfor %}
+</table>
+
+</br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

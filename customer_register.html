@@ -1,0 +1,127 @@
+<html>
+<head>
+</head>
+<body>
+<h1> Customer Register</h1>
+<form action="/customer_register_auth" method="POST">
+	<input type="text" name = "email" placeholder="email" required/> </br>
+	<input type="password" name = "password" placeholder="password" required/></br>
+	<input type="text" name = "name" placeholder="name" required/></br>
+	<input type="text" name = "street" placeholder="street" required/></br>
+	<input type="text" name = "building_number" placeholder="building number" required/></br>
+	<input type="text" name = "city" placeholder="city" required/></br>
+	<input type="text" name = "state" placeholder="state" required/></br>
+	<input type="text" name = "phone" placeholder="phone number" required/></br>
+	<input type="text" name = "passport_number" placeholder="passport number" required/></br>
+	<label for="exp_month">Passport Expiration:</label>
+	<select name="exp_month" id="exp_month">
+	  <option value="01">January</option>
+	  <option value="02">February</option>
+	  <option value="03">March</option>
+	  <option value="04">April</option>
+	  <option value="05">May</option>
+	  <option value="06">June</option>
+	  <option value="07">July</option>
+	  <option value="08">August</option>
+	  <option value="09">September</option>
+	  <option value="10">October</option>
+	  <option value="11">November</option>
+	  <option value="12">December</option>
+	</select> 
+	<select name="exp_day" id="exp_day">
+	  <option value="01">1</option>
+	  <option value="02">2</option>
+	  <option value="03">3</option>
+	  <option value="04">4</option>
+	  <option value="05">5</option>
+	  <option value="06">6</option>
+	  <option value="07">7</option>
+	  <option value="08">8</option>
+	  <option value="09">9</option>
+	  <option value="10">10</option>
+	  <option value="11">11</option>
+	  <option value="12">12</option>
+	  <option value="13">13</option>
+	  <option value="14">14</option>
+	  <option value="15">15</option>
+	  <option value="16">16</option>
+	  <option value="17">17</option>
+	  <option value="18">18</option>
+	  <option value="19">19</option>
+	  <option value="20">20</option>
+	  <option value="21">21</option>
+	  <option value="22">22</option>
+	  <option value="23">23</option>
+	  <option value="24">24</option>
+	  <option value="25">25</option>
+	  <option value="26">26</option>
+	  <option value="27">27</option>
+	  <option value="28">28</option>
+	  <option value="29">29</option>
+	  <option value="30">30</option>
+	  <option value="31">31</option>
+	</select> 
+  	<input type="text" name = "exp_year" placeholder="year" required/></br>
+
+	<input type="text" name = "passport_country" placeholder="passport country" required/></br>
+
+	<label for="birth_month">Date of birth:</label>
+  	<select name="birth_month" id="birth_month">
+    	<option value="01">January</option>
+    	<option value="02">February</option>
+    	<option value="03">March</option>
+    	<option value="04">April</option>
+		<option value="05">May</option>
+    	<option value="06">June</option>
+    	<option value="07">July</option>
+    	<option value="08">August</option>
+		<option value="09">September</option>
+    	<option value="10">October</option>
+    	<option value="11">November</option>
+    	<option value="12">December</option>
+  	</select> 
+  	<select name="birth_day" id="birth_day">
+    	<option value="01">1</option>
+    	<option value="02">2</option>
+    	<option value="03">3</option>
+    	<option value="04">4</option>
+		<option value="05">5</option>
+    	<option value="06">6</option>
+    	<option value="07">7</option>
+    	<option value="08">8</option>
+		<option value="09">9</option>
+    	<option value="10">10</option>
+    	<option value="11">11</option>
+    	<option value="12">12</option>
+		<option value="13">13</option>
+    	<option value="14">14</option>
+		<option value="15">15</option>
+    	<option value="16">16</option>
+    	<option value="17">17</option>
+    	<option value="18">18</option>
+		<option value="19">19</option>
+    	<option value="20">20</option>
+    	<option value="21">21</option>
+    	<option value="22">22</option>
+		<option value="23">23</option>
+    	<option value="24">24</option>
+		<option value="25">25</option>
+    	<option value="26">26</option>
+    	<option value="27">27</option>
+    	<option value="28">28</option>
+		<option value="29">29</option>
+    	<option value="30">30</option>
+		<option value="31">31</option>
+  	</select> 
+	<input type="text" name = "birth_year" placeholder="year" required/></br>
+	</br>
+
+	<input type="submit" value = Register />
+
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+<a href="/customer_login">Customer Login</a>
+</body>
+</html>

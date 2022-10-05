@@ -1,0 +1,50 @@
+<html>
+<head>
+</head>
+<body>
+<h2>Airport List</h2>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<form action="/add_airport" method="POST">
+    <label for="code">Airport Code: </label><br>
+    <input type="text" id="code" name="code"><br>
+    <label for="airport_name">Airport Name: </label><br>
+    <input type="text" id="airport_name" name="airport_name"><br>
+    <label for="city">City: </label><br>
+    <input type="text" id="city" name="city"><br>
+    <input type="submit" value="Submit">
+    {% if error %}
+    <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+</form>
+
+<table>
+	<th>Airport Code</th>
+    <th>Airport Name</th>
+    <th>City</th>
+
+{% for line in data %}
+	<tr>
+		<td>{{line['code']}}</td>
+		<td>{{line['airport_name']}}</td>
+        <td>{{line['city']}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+</br>
+
+
+</br>
+<a href="/staff_homepage">Return</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

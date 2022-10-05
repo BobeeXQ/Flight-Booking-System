@@ -1,0 +1,203 @@
+<html>
+<head>
+</head>
+<body>
+<h2>Flights: {{airline_name}}</h2>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<form action="/refresh_staff_view_flights" id="refresh" method="POST">
+	<label for="departure">Depature: </label>
+ <select name="departure" id="departure", form="refresh">
+  <option value="airport_name">Airport</option>
+  <option value="city">City</option>
+ </select>
+ <input type="text" name = "departure_input" placeholder=""/> </br>
+	<label for="arrival">Arrival: </label>
+ <select name="arrival" id="arrival" form="refresh">
+  <option value="airport_name">Airport</option>
+  <option value="city">City</option>
+ </select>
+ <input type="text" name = "arrival_input" placeholder=""/> </br>
+ <label for="start_month">Start Date: </label>
+ <select name="start_month" id="start_month" form="refresh">
+   <option value="01">January</option>
+   <option value="02">February</option>
+   <option value="03">March</option>
+   <option value="04">April</option>
+   <option value="05">May</option>
+   <option value="06">June</option>
+   <option value="07">July</option>
+   <option value="08">August</option>
+   <option value="09">September</option>
+   <option value="10">October</option>
+   <option value="11">November</option>
+   <option value="12">December</option>
+ </select>
+ <select name="start_day" id="start_day" form="refresh">
+   <option value="01">1</option>
+   <option value="02">2</option>
+   <option value="03">3</option>
+   <option value="04">4</option>
+   <option value="05">5</option>
+   <option value="06">6</option>
+   <option value="07">7</option>
+   <option value="08">8</option>
+   <option value="09">9</option>
+   <option value="10">10</option>
+   <option value="11">11</option>
+   <option value="12">12</option>
+   <option value="13">13</option>
+   <option value="14">14</option>
+   <option value="15">15</option>
+   <option value="16">16</option>
+   <option value="17">17</option>
+   <option value="18">18</option>
+   <option value="19">19</option>
+   <option value="20">20</option>
+   <option value="21">21</option>
+   <option value="22">22</option>
+   <option value="23">23</option>
+   <option value="24">24</option>
+   <option value="25">25</option>
+   <option value="26">26</option>
+   <option value="27">27</option>
+   <option value="28">28</option>
+   <option value="29">29</option>
+   <option value="30">30</option>
+   <option value="31">31</option>
+ </select>
+   <input type="text" name = "start_year" placeholder="year"/>
+
+</br>
+ <label for="end_month">End Date:</label>
+    <select name="end_month" id="end_month" form="refresh">
+     <option value="01">January</option>
+     <option value="02">February</option>
+     <option value="03">March</option>
+     <option value="04">April</option>
+  <option value="05">May</option>
+     <option value="06">June</option>
+     <option value="07">July</option>
+     <option value="08">August</option>
+  <option value="09">September</option>
+     <option value="10">October</option>
+     <option value="11">November</option>
+     <option value="12">December</option>
+   </select>
+   <select name="end_day" id="end_day" form="refresh">
+     <option value="01">1</option>
+     <option value="02">2</option>
+     <option value="03">3</option>
+     <option value="04">4</option>
+  <option value="05">5</option>
+     <option value="06">6</option>
+     <option value="07">7</option>
+     <option value="08">8</option>
+  <option value="09">9</option>
+     <option value="10">10</option>
+     <option value="11">11</option>
+     <option value="12">12</option>
+  <option value="13">13</option>
+     <option value="14">14</option>
+  <option value="15">15</option>
+     <option value="16">16</option>
+     <option value="17">17</option>
+     <option value="18">18</option>
+  <option value="19">19</option>
+     <option value="20">20</option>
+     <option value="21">21</option>
+     <option value="22">22</option>
+  <option value="23">23</option>
+     <option value="24">24</option>
+  <option value="25">25</option>
+     <option value="26">26</option>
+     <option value="27">27</option>
+     <option value="28">28</option>
+  <option value="29">29</option>
+     <option value="30">30</option>
+  <option value="31">31</option>
+   </select>
+ <input type="text" name = "end_year" placeholder="year"/></br>
+ </br>
+    <input type="submit" value = Submit />
+
+</form>
+
+<form action="/add_flight">
+    <button type="submit">Add Flight</button>
+</form>
+
+{% if error %}
+  <p class="error"><strong>Error:</strong> {{error}}</p >
+{% endif %}
+
+<h3>Flight Table</h3>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<table>
+	<th>Airline</th>
+    <th>Flight Number</th>
+    <th>Departure Date</th>
+    <th>Departure Time</th>
+    <th>Departure Airport</th>
+    <th>Arrival Date</th>
+    <th>Arrival Time</th>
+    <th>Arrival Airport</th>
+    <th>Flight Status</th>
+    <th>Change Status</th>
+    <th>Customers & Ratings</th>
+
+{% for line in data %}
+	<tr>
+        <td>{{line['airline_name']}}</td>
+		<td>{{line['flight_number']}}</td>
+        <td>{{line['departure_date']}}</td>
+        <td>{{line['departure_time']}}</td>
+		<td>{{line['d_airport_name']}}</td>
+        <td>{{line['arrival_date']}}</td>
+        <td>{{line['arrival_time']}}</td>
+        <td>{{line['a_airport_name']}}</td>
+        <td>{{line['flight_status']}}</td>
+        <td>
+            <select name="status" id="status", form="status_{{line['flight_number']}}_{{line['departure_date']}}">
+            <option value="on-time">on-time</option>
+            <option value="delayed">delayed</option>
+            </select>
+            <input type="submit" value = "submit" form = "status_{{line['flight_number']}}_{{line['departure_date']}}" />
+        </td>
+        <input type="hidden" id="airline_name" name="airline_name" value= "{{line['airline_name']}}" form = "status_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <input type="hidden" id="flight_number" name="flight_number" value= "{{line['flight_number']}}" form = "status_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <input type="hidden" id="departure_date" name="departure_date" value= "{{line['departure_date']}}" form = "status_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <input type="hidden" id="departure_time" name="departure_time" value= "{{line['departure_time']}}" form = "status_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <form action="/change_status" method="POST" id="status_{{line['flight_number']}}_{{line['departure_date']}}"></form>
+
+
+        <td><input type="submit" value = "Customers and Ratings" form = "cr_{{line['flight_number']}}_{{line['departure_date']}}" /></td>
+        <input type="hidden" id="airline_name_2" name="airline_name" value= "{{line['airline_name']}}" form = "cr_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <input type="hidden" id="flight_number_2" name="flight_number" value= "{{line['flight_number']}}" form = "cr_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <input type="hidden" id="departure_date_2" name="departure_date" value= "{{line['departure_date']}}" form = "cr_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <input type="hidden" id="departure_time_2" name="departure_time" value= "{{line['departure_time']}}" form = "cr_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <form action="/flight_customer_rating" method="POST" id="cr_{{line['flight_number']}}_{{line['departure_date']}}"></form>
+	</tr>
+{% endfor %}
+
+</table>
+
+</br>
+<a href="/staff_homepage">Homepage</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

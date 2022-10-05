@@ -1,0 +1,99 @@
+<html>
+<head>
+</head>
+<body>
+<h2>View Flights</h2>
+
+<h3>My Upcoming Flights</h3>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<table>
+	<th>Airline</th>
+    <th>Flight Number</th>
+    <th>Departure Date</th>
+    <th>Departure Time</th>
+    <th>Departure Airport</th>
+    <th>Arrival Date</th>
+    <th>Arrival Time</th>
+    <th>Arrival Airport</th>
+    <th>Flight Status</th>
+
+{% for line in future %}
+	<tr>
+        <td>{{line['t_airline_name']}}</td>
+		<td>{{line['t_flight_number']}}</td>
+        <td>{{line['t_departure_date']}}</td>
+        <td>{{line['t_departure_time']}}</td>
+		<td>{{line['d_airport_name']}}</td>
+        <td>{{line['arrival_date']}}</td>
+        <td>{{line['arrival_time']}}</td>
+        <td>{{line['a_airport_name']}}</td>
+        <td>{{line['flight_status']}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+<h3>My Past Flights</h3>
+
+<table>
+	<th>Airline</th>
+    <th>Flight Number</th>
+    <th>Departure Date</th>
+    <th>Departure Time</th>
+    <th>Departure Airport</th>
+    <th>Arrival Date</th>
+    <th>Arrival Time</th>
+    <th>Arrival Airport</th>
+    <th>Flight Status</th>
+    <th>Rate</th>
+
+
+{% for line in past %}
+	<tr>
+		<td>{{line['t_airline_name']}}</td>
+		<td>{{line['t_flight_number']}}</td>
+        <td>{{line['t_departure_date']}}</td>
+        <td>{{line['t_departure_time']}}</td>
+		<td>{{line['d_airport_name']}}</td>
+        <td>{{line['arrival_date']}}</td>
+        <td>{{line['arrival_time']}}</td>
+        <td>{{line['a_airport_name']}}</td>
+        <td>{{line['flight_status']}}</td>
+        <td><input type="submit" value = "Rate this flight" form = "goto_rating_{{line['t_flight_number']}}_{{line['t_departure_date']}}" /></td>
+        <input type="hidden" id="airline_name" name="airline_name" value= "{{line['t_airline_name']}}" form = "goto_rating_{{line['t_flight_number']}}_{{line['t_departure_date']}}" />
+        <input type="hidden" id="flight_number" name="flight_number" value= "{{line['t_flight_number']}}" form = "goto_rating_{{line['t_flight_number']}}_{{line['t_departure_date']}}" />
+        <input type="hidden" id="departure_date" name="departure_date" value= "{{line['t_departure_date']}}" form = "goto_rating_{{line['t_flight_number']}}_{{line['t_departure_date']}}" />
+        <input type="hidden" id="departure_time" name="departure_time" value= "{{line['t_departure_time']}}" form = "goto_rating_{{line['t_flight_number']}}_{{line['t_departure_date']}}" />
+        <form action="/rating_form" method="POST" id="goto_rating_{{line['t_flight_number']}}_{{line['t_departure_date']}}"></form>
+{% endfor %}
+</table>
+
+
+<h3>Spending Summary</h3>
+
+<table>
+    <th>Month</th>
+    <th>Amount</th>
+
+{% for line in spending %}
+    <tr>
+        <td>{{line['month']}}</td>
+        <td>{{line['amount']['sum(sold_price)']}}</td>
+    </tr>
+{% endfor %}
+
+</table>
+
+</br>
+<a href="/customer_homepage">Homepage</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

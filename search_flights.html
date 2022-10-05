@@ -1,0 +1,281 @@
+<html>
+<head>
+</head>
+<body>
+<h2>Search Flight</h2>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<form action="/refresh_search_flights" id="refresh" method="POST">
+	<label for="departure">Depature: </label>
+ <select name="departure" id="departure", form="refresh">
+  <option value="airport_name">Airport</option>
+  <option value="city">City</option>
+ </select>
+ <input type="text" name = "departure_input" placeholder=""/> </br>
+	<label for="arrival">Arrival: </label>
+ <select name="arrival" id="arrival" form="refresh">
+  <option value="airport_name">Airport</option>
+  <option value="city">City</option>
+ </select>
+ <input type="text" name = "arrival_input" placeholder=""/> </br>
+ <label for="dep_month">Depature Date: </label>
+ <select name="dep_month" id="dep_month" form="refresh">
+   <option value="01">January</option>
+   <option value="02">February</option>
+   <option value="03">March</option>
+   <option value="04">April</option>
+   <option value="05">May</option>
+   <option value="06">June</option>
+   <option value="07">July</option>
+   <option value="08">August</option>
+   <option value="09">September</option>
+   <option value="10">October</option>
+   <option value="11">November</option>
+   <option value="12">December</option>
+ </select>
+ <select name="dep_day" id="dep_day" form="refresh">
+   <option value="01">1</option>
+   <option value="02">2</option>
+   <option value="03">3</option>
+   <option value="04">4</option>
+   <option value="05">5</option>
+   <option value="06">6</option>
+   <option value="07">7</option>
+   <option value="08">8</option>
+   <option value="09">9</option>
+   <option value="10">10</option>
+   <option value="11">11</option>
+   <option value="12">12</option>
+   <option value="13">13</option>
+   <option value="14">14</option>
+   <option value="15">15</option>
+   <option value="16">16</option>
+   <option value="17">17</option>
+   <option value="18">18</option>
+   <option value="19">19</option>
+   <option value="20">20</option>
+   <option value="21">21</option>
+   <option value="22">22</option>
+   <option value="23">23</option>
+   <option value="24">24</option>
+   <option value="25">25</option>
+   <option value="26">26</option>
+   <option value="27">27</option>
+   <option value="28">28</option>
+   <option value="29">29</option>
+   <option value="30">30</option>
+   <option value="31">31</option>
+ </select>
+   <input type="text" name = "dep_year" placeholder="year"/></br>
+
+    <select name="one_way_round_trip" id="one_way_round_trip" form="refresh">
+     <option value="1">One-Way</option>
+     <option value="2">Round-Trip</option>
+   </select>
+
+</br>
+ <label for="ret_month">Return Date:</label>
+    <select name="ret_month" id="ret_month" form="refresh">
+     <option value="01">January</option>
+     <option value="02">February</option>
+     <option value="03">March</option>
+     <option value="04">April</option>
+  <option value="05">May</option>
+     <option value="06">June</option>
+     <option value="07">July</option>
+     <option value="08">August</option>
+  <option value="09">September</option>
+     <option value="10">October</option>
+     <option value="11">November</option>
+     <option value="12">December</option>
+   </select>
+   <select name="ret_day" id="ret_day" form="refresh">
+     <option value="01">1</option>
+     <option value="02">2</option>
+     <option value="03">3</option>
+     <option value="04">4</option>
+  <option value="05">5</option>
+     <option value="06">6</option>
+     <option value="07">7</option>
+     <option value="08">8</option>
+  <option value="09">9</option>
+     <option value="10">10</option>
+     <option value="11">11</option>
+     <option value="12">12</option>
+  <option value="13">13</option>
+     <option value="14">14</option>
+  <option value="15">15</option>
+     <option value="16">16</option>
+     <option value="17">17</option>
+     <option value="18">18</option>
+  <option value="19">19</option>
+     <option value="20">20</option>
+     <option value="21">21</option>
+     <option value="22">22</option>
+  <option value="23">23</option>
+     <option value="24">24</option>
+  <option value="25">25</option>
+     <option value="26">26</option>
+     <option value="27">27</option>
+     <option value="28">28</option>
+  <option value="29">29</option>
+     <option value="30">30</option>
+  <option value="31">31</option>
+   </select>
+ <input type="text" name = "ret_year" placeholder="year"/></br>
+ </br>
+    <input type="submit" value = Submit />
+
+</form>
+{% if error %}
+  <p class="error"><strong>Error:</strong> {{error}}</p >
+ {% endif %}
+
+{% if is_login == False %}
+<h3>Departure Flights</h3>
+<table>
+	<th>Airline</th>
+    <th>Flight Number</th>
+    <th>Departure Date</th>
+    <th>Departure Time</th>
+    <th>Departure Airport</th>
+    <th>Arrival Date</th>
+    <th>Arrival Time</th>
+    <th>Arrival Airport</th>
+    <th>Flight Status</th>
+    {% for line in departure_data %}
+	<tr>
+        <td>{{line['airline_name']}}</td>
+		<td>{{line['flight_number']}}</td>
+        <td>{{line['departure_date']}}</td>
+        <td>{{line['departure_time']}}</td>
+		<td>{{line['d_airport_name']}}</td>
+        <td>{{line['arrival_date']}}</td>
+        <td>{{line['arrival_time']}}</td>
+        <td>{{line['a_airport_name']}}</td>
+        <td>{{line['flight_status']}}</td>
+	</tr>
+    {% endfor %}
+</table>
+
+    {% if one_way == False %}
+    <h3>Returning Flights</h3>
+    <table>
+	<th>Airline</th>
+    <th>Flight Number</th>
+    <th>Departure Date</th>
+    <th>Departure Time</th>
+    <th>Departure Airport</th>
+    <th>Arrival Date</th>
+    <th>Arrival Time</th>
+    <th>Arrival Airport</th>
+    <th>Flight Status</th>
+    {% for line in return_data %}
+	<tr>
+        <td>{{line['airline_name']}}</td>
+		<td>{{line['flight_number']}}</td>
+        <td>{{line['departure_date']}}</td>
+        <td>{{line['departure_time']}}</td>
+		<td>{{line['d_airport_name']}}</td>
+        <td>{{line['arrival_date']}}</td>
+        <td>{{line['arrival_time']}}</td>
+        <td>{{line['a_airport_name']}}</td>
+        <td>{{line['flight_status']}}</td>
+	</tr>
+    {% endfor %}
+</table>
+    {% endif %}
+{% endif %}
+
+
+
+{% if is_login == True %}
+<h3>Departure Flights</h3>
+<table>
+	<th>Airline</th>
+    <th>Flight Number</th>
+    <th>Departure Date</th>
+    <th>Departure Time</th>
+    <th>Departure Airport</th>
+    <th>Arrival Date</th>
+    <th>Arrival Time</th>
+    <th>Arrival Airport</th>
+    <th>Flight Status</th>
+    <th>Purchase Ticket</th>
+    {% for line in departure_data %}
+	<tr>
+        <td>{{line['airline_name']}}</td>
+		<td>{{line['flight_number']}}</td>
+        <td>{{line['departure_date']}}</td>
+        <td>{{line['departure_time']}}</td>
+		<td>{{line['d_airport_name']}}</td>
+        <td>{{line['arrival_date']}}</td>
+        <td>{{line['arrival_time']}}</td>
+        <td>{{line['a_airport_name']}}</td>
+        <td>{{line['flight_status']}}</td>
+        <td><input type="submit" value = "Purchase Ticket" form = "purchase_{{line['flight_number']}}_{{line['departure_date']}}" /></td>
+        <form action="/purchase_ticket" method="POST" id="purchase_{{line['flight_number']}}_{{line['departure_date']}}">
+        <input type="hidden" id="airline_name" name="airline_name" value= "{{line['airline_name']}}" form = "purchase_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <input type="hidden" id="flight_number" name="flight_number" value= "{{line['flight_number']}}" form = "purchase_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <input type="hidden" id="departure_date" name="departure_date" value= "{{line['departure_date']}}" form = "purchase_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <input type="hidden" id="departure_time" name="departure_time" value= "{{line['departure_time']}}" form = "purchase_{{line['flight_number']}}_{{line['departure_date']}}" />
+            <input type="hidden" id="email" name="email" value= "{{email}}" form = "purchase_{{line['flight_number']}}_{{line['departure_date']}}"/>
+        </form>
+	</tr>
+
+    {% endfor %}
+</table>
+
+    {% if one_way == False %}
+    <h3>Returning Flights</h3>
+    <table>
+	<th>Airline</th>
+    <th>Flight Number</th>
+    <th>Departure Date</th>
+    <th>Departure Time</th>
+    <th>Departure Airport</th>
+    <th>Arrival Date</th>
+    <th>Arrival Time</th>
+    <th>Arrival Airport</th>
+    <th>Flight Status</th>
+    {% for line in return_data %}
+	<tr>
+        <td>{{line['airline_name']}}</td>
+		<td>{{line['flight_number']}}</td>
+        <td>{{line['departure_date']}}</td>
+        <td>{{line['departure_time']}}</td>
+		<td>{{line['d_airport_name']}}</td>
+        <td>{{line['arrival_date']}}</td>
+        <td>{{line['arrival_time']}}</td>
+        <td>{{line['a_airport_name']}}</td>
+        <td><input type="submit" value = "Purchase Ticket" form = "purchase_2_{{line['flight_number']}}_{{line['departure_date']}}" /></td>
+        <form action="/purchase_ticket" method="POST" id="purchase_2_{{line['flight_number']}}_{{line['departure_date']}}">
+        <input type="hidden" id="airline_name_2" name="airline_name" value= "{{line['airline_name']}}" form = "purchase_2_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <input type="hidden" id="flight_number_2" name="flight_number" value= "{{line['flight_number']}}" form = "purchase_2_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <input type="hidden" id="departure_date_2" name="departure_date" value= "{{line['departure_date']}}" form = "purchase_2_{{line['flight_number']}}_{{line['departure_date']}}" />
+        <input type="hidden" id="departure_time_2" name="departure_time" value= "{{line['departure_time']}}" form = "purchase_2_{{line['flight_number']}}_{{line['departure_date']}}" />
+            <input type="hidden" id="email_2" name="email" value= "{{email}}" form = "purchase_2_{{line['flight_number']}}_{{line['departure_date']}}" />
+        </form>
+	</tr>
+    {% endfor %}
+</table>
+    {% endif %}
+{% endif %}
+</br>
+{% if is_login == True%}
+<a href="/customer_homepage">Return</a></br>
+<a href="/logout">Logout</a>
+{% endif %}
+
+{% if is_login == False %}
+<a href="/">Return</a>
+{% endif %}
+
+</body>
+
+</html>

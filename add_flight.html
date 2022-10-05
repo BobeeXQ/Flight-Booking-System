@@ -1,0 +1,177 @@
+<html>
+<head>
+</head>
+<body>
+<h1> Add Flight</h1>
+<form action="/add_flight_submit" method="POST">
+	<input type="text" name = "flight_number" placeholder="flight number" required/> </br>
+	<input type="text" name = "departure_airport_name" placeholder="departure airport name" required/></br>
+	<input type="text" name = "arrival_airport_name" placeholder="arrival airport name" required/></br>
+	<input type="text" name = "base_price" placeholder="base price" required/></br>
+	<input type="text" name = "airplane_ID" placeholder="airplane ID" required/></br>
+	<label for="departure_month">Departure Date:</label>
+	<select name="departure_month" id="departure_month">
+	  <option value="01">January</option>
+	  <option value="02">February</option>
+	  <option value="03">March</option>
+	  <option value="04">April</option>
+	  <option value="05">May</option>
+	  <option value="06">June</option>
+	  <option value="07">July</option>
+	  <option value="08">August</option>
+	  <option value="09">September</option>
+	  <option value="10">October</option>
+	  <option value="11">November</option>
+	  <option value="12">December</option>
+	</select> 
+	<select name="departure_day" id="departure_day">
+	  <option value="01">1</option>
+	  <option value="02">2</option>
+	  <option value="03">3</option>
+	  <option value="04">4</option>
+	  <option value="05">5</option>
+	  <option value="06">6</option>
+	  <option value="07">7</option>
+	  <option value="08">8</option>
+	  <option value="09">9</option>
+	  <option value="10">10</option>
+	  <option value="11">11</option>
+	  <option value="12">12</option>
+	  <option value="13">13</option>
+	  <option value="14">14</option>
+	  <option value="15">15</option>
+	  <option value="16">16</option>
+	  <option value="17">17</option>
+	  <option value="18">18</option>
+	  <option value="19">19</option>
+	  <option value="20">20</option>
+	  <option value="21">21</option>
+	  <option value="22">22</option>
+	  <option value="23">23</option>
+	  <option value="24">24</option>
+	  <option value="25">25</option>
+	  <option value="26">26</option>
+	  <option value="27">27</option>
+	  <option value="28">28</option>
+	  <option value="29">29</option>
+	  <option value="30">30</option>
+	  <option value="31">31</option>
+	</select> 
+  	<input type="text" name = "departure_year" placeholder="year" required/></br>
+	<label for="departure_hour">Departure Time:</label>
+	<select name="departure_hour" id="departure_hour">
+		<option value="00">0</option>
+	  <option value="01">1</option>
+	  <option value="02">2</option>
+	  <option value="03">3</option>
+	  <option value="04">4</option>
+	  <option value="05">5</option>
+	  <option value="06">6</option>
+	  <option value="07">7</option>
+	  <option value="08">8</option>
+	  <option value="09">9</option>
+	  <option value="10">10</option>
+	  <option value="11">11</option>
+	  <option value="12">12</option>
+	  <option value="13">13</option>
+	  <option value="14">14</option>
+	  <option value="15">15</option>
+	  <option value="16">16</option>
+	  <option value="17">17</option>
+	  <option value="18">18</option>
+	  <option value="19">19</option>
+	  <option value="20">20</option>
+	  <option value="21">21</option>
+	  <option value="22">22</option>
+	  <option value="23">23</option>
+	</select>
+	<input type="text" name = "departure_minute" placeholder="minute" required/></br>
+
+
+
+	<label for="arrival_month">Date of birth:</label>
+  	<select name="arrival_month" id="arrival_month">
+    	<option value="01">January</option>
+    	<option value="02">February</option>
+    	<option value="03">March</option>
+    	<option value="04">April</option>
+		<option value="05">May</option>
+    	<option value="06">June</option>
+    	<option value="07">July</option>
+    	<option value="08">August</option>
+		<option value="09">September</option>
+    	<option value="10">October</option>
+    	<option value="11">November</option>
+    	<option value="12">December</option>
+  	</select> 
+  	<select name="arrival_day" id="arrival_day">
+    	<option value="01">1</option>
+    	<option value="02">2</option>
+    	<option value="03">3</option>
+    	<option value="04">4</option>
+		<option value="05">5</option>
+    	<option value="06">6</option>
+    	<option value="07">7</option>
+    	<option value="08">8</option>
+		<option value="09">9</option>
+    	<option value="10">10</option>
+    	<option value="11">11</option>
+    	<option value="12">12</option>
+		<option value="13">13</option>
+    	<option value="14">14</option>
+		<option value="15">15</option>
+    	<option value="16">16</option>
+    	<option value="17">17</option>
+    	<option value="18">18</option>
+		<option value="19">19</option>
+    	<option value="20">20</option>
+    	<option value="21">21</option>
+    	<option value="22">22</option>
+		<option value="23">23</option>
+    	<option value="24">24</option>
+		<option value="25">25</option>
+    	<option value="26">26</option>
+    	<option value="27">27</option>
+    	<option value="28">28</option>
+		<option value="29">29</option>
+    	<option value="30">30</option>
+		<option value="31">31</option>
+  	</select> 
+	<input type="text" name = "arrival_year" placeholder="year" required/></br>
+	<label for="arrival_hour">Departure Time:</label>
+	<select name="arrival_hour" id="arrival_hour">
+		<option value="00">0</option>
+	  <option value="01">1</option>
+	  <option value="02">2</option>
+	  <option value="03">3</option>
+	  <option value="04">4</option>
+	  <option value="05">5</option>
+	  <option value="06">6</option>
+	  <option value="07">7</option>
+	  <option value="08">8</option>
+	  <option value="09">9</option>
+	  <option value="10">10</option>
+	  <option value="11">11</option>
+	  <option value="12">12</option>
+	  <option value="13">13</option>
+	  <option value="14">14</option>
+	  <option value="15">15</option>
+	  <option value="16">16</option>
+	  <option value="17">17</option>
+	  <option value="18">18</option>
+	  <option value="19">19</option>
+	  <option value="20">20</option>
+	  <option value="21">21</option>
+	  <option value="22">22</option>
+	  <option value="23">23</option>
+	</select>
+	<input type="text" name = "arrival_minute" placeholder="minute" required/>
+	</br>
+	<input type="submit" value = Add />
+
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+</body>
+</html>

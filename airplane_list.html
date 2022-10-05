@@ -1,0 +1,53 @@
+<html>
+<head>
+</head>
+<body>
+<h2>Airplane List</h2>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<form action="/add_airplane" method="POST">
+    <label for="airplane_id">Airplane ID: </label><br>
+    <input type="text" id="airplane_id" name="airplane_id"><br>
+    <label for="num_seats">Number of Seats: </label><br>
+    <input type="text" id="num_seats" name="num_seats">
+    <input type="hidden" id="airline_name" name="airline_name" value= "{{airline_name}}" />
+    <input type="submit" value="Submit">
+    {% if error %}
+    <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+</form>
+
+
+</br>
+
+<table>
+    <th>Airline Name</th>
+	<th>Airplane ID</th>
+    <th>Number of Seats</th>
+
+{% for line in data %}
+	<tr>
+        <td>{{line['airline_name']}}</td>
+		<td>{{line['airplane_ID']}}</td>
+		<td>{{line['num_seats']}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+</br>
+
+
+
+</br>
+<a href="/staff_homepage">Return</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

@@ -1,0 +1,59 @@
+<html>
+<head>
+</head>
+<br>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<h2>Reports Page for {{airline_name}}</h2>
+
+<h3>Ticket And Revenue Summary</h3>
+<table>
+	<th>Time</th>
+	<th>Tickets Sold</th>
+	<th>Revenue</th>
+
+	<tr>
+        <td>Last Month</td>
+		<td>{{last_month_ticket['count(ID)']}}</td>
+		<td>{{last_month_revenue['sum(sold_price)']}}</td>
+	</tr>
+    <tr>
+        <td>Last Year</td>
+		<td>{{last_year_ticket['count(ID)']}}</td>
+		<td>{{last_year_revenue['sum(sold_price)']}}</td>
+	</tr>
+</table>
+
+<h3>Top 3 Destinations</h3>
+<text>Last 3 Months:</text></br>
+<table>
+	<th>Location</th>
+	{% for line in location_rank_year %}
+	<tr>
+		<td>{{line['city']}}</td>
+	</tr>
+	{% endfor %}
+</table></br>
+<text>Last Year:</text></br>
+<table>
+	<th>Location</th>
+	{% for line in location_rank_year %}
+	<tr>
+		<td>{{line['city']}}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+
+</br>
+<a href="/staff_homepage">Return</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+</html>

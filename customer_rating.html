@@ -1,0 +1,64 @@
+<html>
+<head>
+</head>
+<body>
+<h2>Rate my flight</h2>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<table>
+	<th>Airline Name</th>
+    <th>Flight Number</th>
+    <th>Departure Date</th>
+    <th>Departure Time</th>
+	<tr>
+		<td>{{data['airline_name']}}</td>
+		<td>{{data['flight_number']}}</td>
+        <td>{{data['departure_date']}}</td>
+        <td>{{data['departure_time']}}</td>
+	</tr>
+</table>
+
+</br>
+
+
+<label for="rating">Rating:</label>
+	<select name="rating" id="rating", form="submit_rating">
+	  <option value="1">1 Star</option>
+	  <option value="2">2 Stars</option>
+	  <option value="3">3 Stars</option>
+	  <option value="4">4 Stars</option>
+	  <option value="5">5 Stars</option>
+	</select>
+</br>
+<label for="comment">Comment:</label>
+<textarea id="comment" name="comment" rows="4" cols="50" form = 'submit_rating'></textarea>
+
+<form action="/submit_rating" method="POST" id="submit_rating">
+	<input type="hidden" id="airline_name" name="airline_name" value = "{{data['airline_name']}}" />
+	<input type="hidden" id="flight_number" name="flight_number" value= "{{data['flight_number']}}" />
+	<input type="hidden" id="departure_date" name="departure_date" value= "{{data['departure_date']}}" />
+	<input type="hidden" id="departure_time" name="departure_time" value= "{{data['departure_time']}}" />
+	<input type="submit" value = Submit />
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+
+</br>
+</br>
+
+<a href="/customer_view_flights">Return</a>
+
+</br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>
