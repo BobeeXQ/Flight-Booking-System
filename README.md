@@ -2,7 +2,7 @@
 ## Description
 Flight Booking Sytem is built using HTML, Python Flask, and MySQL that allows data search, secured transaction, and user authentication.
 
-## Technology
+## Technologies
 * HTML
 * Python Flask
 * MySQL
